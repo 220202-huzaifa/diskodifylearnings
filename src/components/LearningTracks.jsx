@@ -1,0 +1,213 @@
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
+
+/**
+ * Scroll behavior: pinned stage. The whole section sticks to the
+ * viewport — the page visually stays put — while scroll progress
+ * drives the cards. Card 1 sits in the frame; as you keep scrolling,
+ * card 2 slides up from the bottom and covers it, then card 3 does
+ * the same. Only after all cards have stacked does the page release
+ * and continue to the next component.
+ *
+ * Same "New Horizon" tokens as Hero.jsx: Bricolage Grotesque / Inter /
+ * JetBrains Mono, and each track's accent sampled from the hero sky
+ * gradient (gold / coral / violet).
+ */
+
+const TOWER_HEIGHTS = [0.5, 1, 0.7, 0.85]
+
+const MiniSkyline = ({ accent }) => (
+  <svg viewBox="0 0 120 100" className="h-full w-full" aria-hidden="true">
+    {TOWER_HEIGHTS.map((h, i) => {
+      const barW = 22
+      const gap = 8
+      const x = i * (barW + gap) + 6
+      const barH = h * 84
+      return (
+        <motion.rect
+          key={i}
+          x={x}
+          width={barW}
+          y={100 - barH}
+          height={barH}
+          rx={3}
+          fill={accent}
+          initial={{ scaleY: 0, opacity: 0.9 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true }}
+          style={{ transformOrigin: `${x + barW / 2}px 100px` }}
+          transition={{ duration: 0.7, delay: 0.15 + i * 0.1, ease: 'easeOut' }}
+        />
+      )
+    })}
+  </svg>
+)
+
+const StackCard = ({ title, description, count, accent, tag, index, scrollYProgress, total }) => {
+  // Card 0 is already in the frame. Every card after it slides up from
+  // the bottom of the pinned stage during its own slice of the scroll.
+  // Progress is divided across the (total - 1) transitions so the
+  // section releases right as the last card lands — no dead scroll.
+  const segment = 1 / (total - 1)
+  const start = (index - 1) * segment
+  const end = index * segment
+
+  const y = useTransform(
+    scrollYProgress,
+    index === 0 ? [0, 1] : [start, end],
+    index === 0 ? ['0%', '0%'] : ['100%', '0%']
+  )
+
+  // As the NEXT card slides over this one, scale this card down and dim
+  // it so it visibly recedes instead of just being covered by a dark block.
+  const nextStart = index * segment
+  const nextEnd = (index + 1) * segment
+  const isLast = index === total - 1
+  const scale = useTransform(
+    scrollYProgress,
+    isLast ? [0, 1] : [nextStart, nextEnd],
+    isLast ? [1, 1] : [1, 0.92]
+  )
+  const brightness = useTransform(
+    scrollYProgress,
+    isLast ? [0, 1] : [nextStart, nextEnd],
+    isLast ? [1, 1] : [1, 0.5]
+  )
+  const filter = useTransform(brightness, (b) => `brightness(${b})`)
+
+  return (
+    <motion.div
+      className="absolute inset-0"
+      style={{ zIndex: 10 + index, y, scale, filter }}
+    >
+      <div
+        className={`relative flex h-full w-full items-center justify-center overflow-hidden px-6 md:px-8 ${
+          index === 0 ? '' : 'rounded-t-[2.5rem] border-t'
+        }`}
+        style={index === 0 ? undefined : { borderColor: `${accent}66` }}
+      >
+        {/* card surface — full bleed, this is a full screen "slide" */}
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(160deg, #170F2B 0%, #0D0A19 60%, ${accent}1A 100%)` }}
+        />
+
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-12 md:flex-row">
+          <div className="h-56 w-56 flex-shrink-0">
+            <div
+              className="relative h-full w-full overflow-hidden rounded-3xl border p-6"
+              style={{ backgroundColor: `${accent}14`, borderColor: `${accent}33` }}
+            >
+              <span
+                className="absolute left-5 top-5 rounded-full border px-2.5 py-1 font-mono text-[10px] tracking-[0.2em]"
+                style={{ borderColor: `${accent}55`, color: accent }}
+              >
+                {tag}
+              </span>
+              <div className="flex h-full items-end pb-2">
+                <MiniSkyline accent={accent} />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 text-center md:text-left">
+            <span
+              className="mb-4 inline-block rounded-full px-4 py-2 font-mono text-xs tracking-[0.15em]"
+              style={{ backgroundColor: `${accent}1F`, color: accent }}
+            >
+              {count} COURSES
+            </span>
+
+            <h2 className="mb-6 font-display text-5xl font-extrabold leading-[1] text-[#FBF4E8] md:text-7xl">
+              {title}
+            </h2>
+
+            <p className="mb-8 max-w-lg text-lg font-light leading-relaxed text-[#B9AFC9] md:text-xl">
+              {description}
+            </p>
+
+            <motion.button
+              data-hoverable
+              className="rounded-full px-8 py-4 font-medium tracking-wide text-[#170F2B] transition-colors duration-300"
+              style={{ backgroundColor: accent }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              Explore track
+            </motion.button>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+const LearningTracks = () => {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  })
+
+  const tracks = [
+    {
+      tag: 'AI',
+      title: 'AI Development',
+      description:
+        'Master machine learning, neural networks, and the AI techniques reshaping every industry.',
+      count: '24',
+      accent: '#FFC65C',
+    },
+    {
+      tag: 'WEB',
+      title: 'Web Development',
+      description:
+        'Build modern, responsive web applications with React, Next.js, and the latest frontend tools.',
+      count: '36',
+      accent: '#FF6F59',
+    },
+    {
+      tag: 'APP',
+      title: 'App Development',
+      description:
+        'Create native and cross-platform mobile apps using React Native, Flutter, and more.',
+      count: '18',
+      accent: '#B085E0',
+    },
+  ]
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative bg-[#0D0A19]"
+      style={{ height: `${tracks.length * 100}vh` }}
+    >
+      {/* Pinned stage — the page "stays here" while cards stack inside */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {tracks.map((track, i) => (
+          <StackCard
+            key={track.title}
+            {...track}
+            index={i}
+            total={tracks.length}
+            scrollYProgress={scrollYProgress}
+          />
+        ))}
+
+        {/* Heading overlay — stays fixed inside the pinned frame */}
+        <div className="pointer-events-none absolute left-0 top-0 z-50 w-full px-6 pt-24 md:px-8">
+          <div className="mx-auto max-w-7xl">
+            <span className="mb-2 inline-block font-mono text-xs tracking-[0.2em] text-[#FFC65C]">
+              02 — LEARNING TRACKS
+            </span>
+            <h1 className="font-display text-4xl font-extrabold text-[#FBF4E8] md:text-5xl">
+              Choose your path
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default LearningTracks

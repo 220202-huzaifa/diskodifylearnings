@@ -6,6 +6,7 @@ import LearningTracks from './components/LearningTracks'
 import WhyDiskodify from './components/WhyDiskodify'
 import FeaturedCourses from './components/FeaturedCourses'
 import InstructorSpotlight from './components/InstructorSpotlight'
+import TeamHierarchy from './components/TeamHierarchy'
 import Community from './components/Community'
 import Footer from './components/Footer'
 import { useLenisSmoothScroll } from './utils/smoothScroll'
@@ -23,6 +24,7 @@ function App() {
         <WhyDiskodify />
         <FeaturedCourses />
         <InstructorSpotlight />
+        <TeamHierarchy />
         <Community />
       </main>
       <Footer />

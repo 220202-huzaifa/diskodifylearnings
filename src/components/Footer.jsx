@@ -16,18 +16,7 @@ const Footer = () => {
               Empowering the next generation of tech leaders with world-class education 
               in AI, Web, and App Development.
             </p>
-            <div className="flex gap-4">
-              {['Twitter', 'LinkedIn', 'GitHub', 'Discord'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors"
-                  data-hoverable
-                >
-                  <span className="text-sm font-medium">{social[0]}</span>
-                </a>
-              ))}
-            </div>
+           
           </motion.div>
 
           <motion.div
@@ -38,7 +27,7 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold mb-6">Learning Tracks</h4>
             <ul className="space-y-3">
-              {['AI Development', 'Web Development', 'App Development', 'Data Science'].map((item) => (
+              {['AI Development', 'Web Development', 'App Development', 'Mern Stack', 'Python','Machine Learning'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors" data-hoverable>
                     {item}
@@ -56,7 +45,7 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold mb-6">Company</h4>
             <ul className="space-y-3">
-              {['About Us', 'Careers', 'Blog', 'Press'].map((item) => (
+              {['About Us'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors" data-hoverable>
                     {item}
@@ -74,7 +63,7 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold mb-6">Support</h4>
             <ul className="space-y-3">
-              {['Help Center', 'Contact Us', 'Privacy Policy', 'Terms of Service'].map((item) => (
+              {['Contact Us', '+92 3478852590', 'info@diskodifysolutions.com'].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white transition-colors" data-hoverable>
                     {item}
@@ -92,20 +81,10 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm text-center items">
             © 2024 Diskodify. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors" data-hoverable>
-              Privacy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors" data-hoverable>
-              Terms
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors" data-hoverable>
-              Cookies
-            </a>
-          </div>
+        
         </motion.div>
       </div>
     </footer>

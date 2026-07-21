@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 /**
  * "New Horizon" light section — cream editorial layout. Split header
  * with a hairline rule, soft accent glows in the background, and a
- * bento grid: one oversized feature course card plus compact cards,
- * all using the gold / coral / violet accents sampled from the hero
- * sky gradient. Bricolage Grotesque / Inter / JetBrains Mono.
+ * bento grid: one oversized internship program card plus compact
+ * process cards, all using the gold / coral / violet accents sampled
+ * from the hero sky gradient. Bricolage Grotesque / Inter / JetBrains Mono.
  */
 
 const TOWER_HEIGHTS = [0.5, 1, 0.65, 0.85]
@@ -32,7 +32,7 @@ const ArrowIcon = () => (
   </svg>
 )
 
-const CourseCard = ({ course, index, featured = false }) => {
+const StepCard = ({ step, index, featured = false }) => {
   const accent = ACCENTS[index % ACCENTS.length]
 
   return (
@@ -64,9 +64,9 @@ const CourseCard = ({ course, index, featured = false }) => {
             className="rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.15em]"
             style={{ backgroundColor: `${accent}26`, color: '#170F2B' }}
           >
-            {course.level.toUpperCase()}
+            {step.tag.toUpperCase()}
           </span>
-          <span className="font-mono text-xs text-[#8A8398]">{course.duration}</span>
+          <span className="font-mono text-xs text-[#8A8398]">{step.meta}</span>
         </div>
 
         <h3
@@ -74,11 +74,21 @@ const CourseCard = ({ course, index, featured = false }) => {
             featured ? 'text-3xl md:text-5xl md:leading-[1.05]' : 'text-xl'
           }`}
         >
-          {course.title}
+          {step.title}
         </h3>
         <p className={`leading-relaxed text-[#5C5470] ${featured ? 'max-w-md text-base md:text-lg' : 'text-sm'}`}>
-          {course.description}
+          {step.description}
         </p>
+        {featured && step.highlights && (
+          <ul className="mt-6 space-y-2">
+            {step.highlights.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-[#5C5470] md:text-base">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9563F]" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="relative mt-8 flex items-end justify-between">
@@ -86,7 +96,7 @@ const CourseCard = ({ course, index, featured = false }) => {
           className="inline-flex items-center gap-2 font-medium text-[#170F2B] transition-colors group-hover:text-[color:var(--accent)]"
           style={{ '--accent': accent }}
         >
-          View course
+          {step.cta}
           <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
             <ArrowIcon />
           </span>
@@ -98,48 +108,61 @@ const CourseCard = ({ course, index, featured = false }) => {
   )
 }
 
-const FeaturedCourses = () => {
-  const courses = [
+const HowWeWork = () => {
+  const steps = [
     {
-      title: 'Machine Learning Fundamentals',
-      description: 'Learn the core concepts of ML and build your first models.',
-      level: 'Beginner',
-      duration: '8 weeks',
+      title: 'Internship Program',
+      description:
+        'Our flagship program puts you inside real projects with real deadlines. Work alongside senior engineers, ship production features, and graduate with a portfolio and experience letter that actually mean something.',
+      tag: 'Flagship',
+      meta: '3–6 months',
+      cta: 'Apply for internship',
+      highlights: [
+        'Hands-on work on live client and in-house projects',
+        'Weekly 1-on-1 mentorship and code reviews',
+        'Certificate + experience letter on completion',
+        'Top performers get full-time offers',
+      ],
     },
     {
-      title: 'Advanced React Patterns',
-      description: 'Master complex React architectures and performance optimization.',
-      level: 'Advanced',
-      duration: '6 weeks',
+      title: 'Learn the Fundamentals',
+      description: 'Start with structured, mentor-led training tailored to your track — web, mobile, or AI.',
+      tag: 'Step 01',
+      meta: '4–8 weeks',
+      cta: 'Explore tracks',
     },
     {
-      title: 'iOS Development with Swift',
-      description: 'Build professional iOS apps from scratch using Swift and SwiftUI.',
-      level: 'Intermediate',
-      duration: '10 weeks',
+      title: 'Build Real Projects',
+      description: 'Move from tutorials to shipping. Build portfolio-grade projects reviewed by senior devs.',
+      tag: 'Step 02',
+      meta: 'Project-based',
+      cta: 'See student work',
     },
     {
-      title: 'Neural Networks Deep Dive',
-      description: 'Understand and implement deep learning architectures.',
-      level: 'Advanced',
-      duration: '12 weeks',
+      title: 'Join a Team',
+      description: 'Get placed into a small squad with a team lead, sprints, standups, and real collaboration.',
+      tag: 'Step 03',
+      meta: 'Agile squads',
+      cta: 'How teams work',
     },
     {
-      title: 'Full-Stack Next.js',
-      description: 'Build production-ready full-stack applications with Next.js.',
-      level: 'Intermediate',
-      duration: '8 weeks',
+      title: 'Get Mentored',
+      description: 'Regular feedback, code reviews, and career guidance from engineers working in the industry.',
+      tag: 'Ongoing',
+      meta: '1-on-1 support',
+      cta: 'Meet the mentors',
     },
     {
-      title: 'Flutter Mobile Mastery',
-      description: 'Create beautiful cross-platform apps with Flutter and Dart.',
-      level: 'Beginner',
-      duration: '10 weeks',
+      title: 'Launch Your Career',
+      description: 'CV reviews, interview prep, and referrals. We help you land your first role or freelance clients.',
+      tag: 'Step 04',
+      meta: 'Career support',
+      cta: 'Success stories',
     },
   ]
 
   return (
-    <section className="relative overflow-hidden bg-[#FBF4E8] py-32">
+    <section id="courses" className="relative overflow-hidden bg-[#FBF4E8] py-32">
       {/* soft accent glows */}
       <div
         className="pointer-events-none absolute -left-40 top-0 h-[480px] w-[480px] rounded-full opacity-60 blur-3xl"
@@ -161,15 +184,15 @@ const FeaturedCourses = () => {
         >
           <div>
             <span className="mb-6 inline-block font-mono text-xs tracking-[0.2em] text-[#C9563F]">
-              04 — FEATURED COURSES
+              04 — HOW WE WORK
             </span>
             <h2 className="font-display text-5xl font-extrabold text-[#170F2B] md:text-7xl">
-              Start learning{' '}
-              <em className="font-display italic text-[#C9563F]">today</em>
+              Learn by{' '}
+              <em className="font-display italic text-[#C9563F]">doing</em>
             </h2>
           </div>
           <p className="max-w-sm text-lg leading-relaxed text-[#5C5470] md:pb-2 md:text-right">
-            Hand-picked courses designed to give you practical skills you can apply immediately.
+            From fundamentals to a real internship a clear, mentor-guided path that turns learners into working engineers.
           </p>
         </motion.div>
 
@@ -181,13 +204,13 @@ const FeaturedCourses = () => {
           className="mb-14 h-px origin-left bg-[#170F2B]/15"
         />
 
-        {/* bento grid: feature card + compact cards */}
+        {/* bento grid: internship feature card + process cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="md:col-span-2 md:row-span-2">
-            <CourseCard course={courses[0]} index={0} featured />
+            <StepCard step={steps[0]} index={0} featured />
           </div>
-          {courses.slice(1).map((course, i) => (
-            <CourseCard key={course.title} course={course} index={i + 1} />
+          {steps.slice(1).map((step, i) => (
+            <StepCard key={step.title} step={step} index={i + 1} />
           ))}
         </div>
 
@@ -202,7 +225,7 @@ const FeaturedCourses = () => {
             data-hoverable
             className="rounded-full border border-[#170F2B]/25 px-8 py-4 font-medium text-[#170F2B] transition-colors hover:border-[#C9563F] hover:text-[#C9563F]"
           >
-            View all courses
+            Apply to the internship program
           </button>
         </motion.div>
       </div>
@@ -210,4 +233,4 @@ const FeaturedCourses = () => {
   )
 }
 
-export default FeaturedCourses
+export default HowWeWork

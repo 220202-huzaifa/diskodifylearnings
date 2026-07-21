@@ -2,18 +2,18 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
 /**
- * "New Horizon" dark section — instructor spotlight. A deep-violet
+ * "New Horizon" dark section — team spotlight. A deep-violet
  * night panel (echoing the hero sky) that contrasts with the cream
  * FeaturedCourses section above it. Editorial two-column layout:
- * copy on the left, a portrait card with a floating quote card on
- * the right. Gold / coral / violet accents, Bricolage Grotesque /
- * Inter / JetBrains Mono.
+ * copy on the left, a founder portrait card with a floating quote
+ * card on the right. Gold / coral / violet accents, Bricolage
+ * Grotesque / Inter / JetBrains Mono.
  */
 
 const STATS = [
-  { value: '50+', label: 'EXPERT INSTRUCTORS' },
-  { value: '12', label: 'FAANG COMPANIES' },
-  { value: '8', label: 'AI RESEARCH LABS' },
+  { value: '10+', label: 'PROJECTS SHIPPED' },
+  { value: '3+', label: 'YEARS IN INDUSTRY' },
+  { value: '100%', label: 'HANDS-ON MENTORSHIP' },
 ]
 
 const InstructorSpotlight = () => {
@@ -28,6 +28,7 @@ const InstructorSpotlight = () => {
 
   return (
     <section
+      id="about"
       ref={containerRef}
       className="relative overflow-hidden bg-[#170F2B] py-32"
       style={{ position: 'relative' }}
@@ -52,22 +53,22 @@ const InstructorSpotlight = () => {
             className="order-2 lg:order-1"
           >
             <span className="mb-6 inline-block font-mono text-xs tracking-[0.2em] text-[#FFC65C]">
-              05 — MEET OUR INSTRUCTORS
+              05 — OUR TEAM
             </span>
             <h2 className="mb-8 font-display text-5xl font-extrabold leading-[1.02] text-[#FBF4E8] md:text-6xl">
-              Learn from people who{' '}
+              Built by people who{' '}
               <em className="italic text-[#FFC65C]">ship</em>
             </h2>
             <div className="space-y-6 text-lg font-light leading-relaxed text-[#B9AFC9]">
               <p>
-                Our instructors aren't just teachers—they're practitioners who work at
-                the world's leading tech companies. They bring real-world experience and
-                insights that you won't find in textbooks.
+                Diskodify is run by working engineers, not career lecturers. Every
+                mentor on the team builds real products for real clients and brings
+                that day-to-day experience straight into your training.
               </p>
               <p>
-                From AI researchers at top labs to senior engineers at FAANG companies,
-                our team is committed to sharing the knowledge that matters most in
-                today's rapidly evolving tech landscape.
+                From full-stack development to front-end craft, our small, tight-knit
+                team reviews your code, guides your projects, and treats you like a
+                junior teammate not a student in a lecture hall.
               </p>
             </div>
 
@@ -91,22 +92,6 @@ const InstructorSpotlight = () => {
               ))}
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-10"
-            >
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                data-hoverable
-                className="rounded-full bg-[#FFC65C] px-8 py-4 text-sm font-medium tracking-wide text-[#170F2B] transition-colors duration-300 hover:bg-[#FFD97E]"
-              >
-                Meet the team
-              </motion.button>
-            </motion.div>
           </motion.div>
 
           <motion.div
@@ -119,34 +104,36 @@ const InstructorSpotlight = () => {
             <div className="relative">
               {/* portrait card */}
               <motion.div style={{ y: portraitY }}>
-                <div
-                  className="relative aspect-square overflow-hidden rounded-3xl border border-[#FBF4E8]/10"
-                  style={{
-                    background:
-                      'linear-gradient(160deg, #241640 0%, #6A2E52 55%, #C9563F 100%)',
-                  }}
-                >
-                  {/* faint window grid texture */}
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage:
-                        'repeating-linear-gradient(0deg, transparent 0 26px, #FFC65C22 26px 28px), repeating-linear-gradient(90deg, transparent 0 26px, #FFC65C22 26px 28px)',
-                    }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="mx-auto mb-5 flex h-32 w-32 items-center justify-center rounded-full border border-[#FFC65C]/40 bg-[#170F2B]/40 backdrop-blur-sm">
-                        <span className="font-display text-5xl font-extrabold text-[#FFC65C]">RK</span>
-                      </div>
-                      <div className="font-display text-xl font-bold text-[#FBF4E8]">Dr. Rachel Kim</div>
-                      <div className="mt-2 inline-block rounded-full border border-[#FFC65C]/40 bg-[#170F2B]/50 px-3 py-1 font-mono text-[10px] tracking-[0.2em] text-[#FFC65C] backdrop-blur-sm">
-                        AI RESEARCH LEAD
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+               <div
+  className="relative aspect-square overflow-hidden rounded-3xl border border-[#FBF4E8]/10"
+>
+  {/* Full background image */}
+  <img
+    src="/assets/Huzaifa.png"
+    alt="Muhammad Huzaifa"
+    className="absolute inset-0 h-full w-full object-cover"
+  />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0D0A19] via-[#0D0A19]/40 to-transparent" />
+
+  {/* Optional accent overlay */}
+  <div className="absolute inset-0 bg-[#170F2B]/20" />
+
+  {/* Content */}
+  <div className="absolute bottom-0 left-0 right-0 p-8">
+    <div className="mb-4 h-[3px] w-16 bg-[#FFC65C]" />
+
+    <h3 className="font-display text-4xl font-extrabold text-[#FBF4E8]">
+      Muhammad Huzaifa
+    </h3>
+
+    <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-[#FFC65C]">
+      Founder &amp; CEO
+    </p>
+  </div>
+</div>
+                   </motion.div>
 
               {/* floating quote card */}
               <motion.div
@@ -158,8 +145,8 @@ const InstructorSpotlight = () => {
                 className="absolute -bottom-8 -right-4 max-w-xs rounded-2xl border border-[#FFC65C]/25 bg-[#0D0A19]/95 p-6 shadow-2xl backdrop-blur-sm md:-right-8"
               >
                 <p className="mb-4 font-display text-lg italic leading-snug text-[#FBF4E8]">
-                  "The best way to predict the future is to create it. We're here to
-                  give you the tools to do exactly that."
+                  "We don't just teach code we bring you into the room where real
+                  products get built, and make sure you leave career-ready."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
@@ -172,7 +159,7 @@ const InstructorSpotlight = () => {
                     ))}
                   </div>
                   <span className="font-mono text-xs tracking-wide text-[#8A8398]">
-                    50+ expert instructors
+                    The Diskodify team
                   </span>
                 </div>
               </motion.div>

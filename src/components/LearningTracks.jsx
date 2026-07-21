@@ -174,10 +174,35 @@ const LearningTracks = () => {
       count: '18',
       accent: '#B085E0',
     },
+    {
+      tag: 'MERN',
+      title: 'MERN Stack',
+      description:
+        'Become a full-stack developer with MongoDB, Express, React, and Node.js — from APIs to deployment.',
+      count: '20',
+      accent: '#5CD6A9',
+    },
+    {
+      tag: 'PY',
+      title: 'Python',
+      description:
+        'Learn Python from the ground up — scripting, automation, data handling, and backend development.',
+      count: '28',
+      accent: '#6FA8FF',
+    },
+    {
+      tag: 'ML',
+      title: 'Machine Learning',
+      description:
+        'Dive into supervised and unsupervised learning, model training, and real-world ML pipelines.',
+      count: '22',
+      accent: '#FF8FB1',
+    },
   ]
 
   return (
     <section
+      id="tracks"
       ref={containerRef}
       className="relative bg-[#0D0A19]"
       style={{ height: `${tracks.length * 100}vh` }}

@@ -13,6 +13,7 @@ export const useLenisSmoothScroll = () => {
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
+      anchors: true,
     })
 
     function raf(time) {

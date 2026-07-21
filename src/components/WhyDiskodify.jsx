@@ -27,19 +27,18 @@ const WhyDiskodify = () => {
               03 — WHY DISKODIFY
             </span>
             <h2 className="text-5xl md:text-6xl font-display font-extrabold text-[#170F2B] mb-8">
-              Education Reimagined for the Modern Era
+              Internships That Feel Like Real Jobs
             </h2>
             <div className="space-y-6 text-[#5C5470] text-lg">
               <p>
-                We believe learning should be an immersive experience, not a passive one. 
-                Our platform combines cutting-edge technology with world-class instruction 
-                to create an environment where you don't just learn—you thrive.
+                Diskodify is an internship platform where you learn by doing. From day 
+                one you're placed on real-time projects, shipping features and solving 
+                problems the way professional teams do.
               </p>
               <p>
-                Every course is designed by industry professionals who understand what 
-                it takes to succeed in today's competitive tech landscape. From hands-on 
-                projects to real-world applications, we ensure you're ready to make an 
-                impact from day one.
+                Every program is guided by industry specialists who mentor you through 
+                the entire build code reviews, standups, and real deadlines included. 
+                You graduate with production experience, not just certificates.
               </p>
             </div>
           </motion.div>
@@ -63,14 +62,13 @@ const WhyDiskodify = () => {
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <blockquote className="text-3xl font-display text-[#170F2B] mb-6 leading-relaxed">
-                  "Diskodify transformed my career. The hands-on approach and mentorship 
-                  gave me the confidence to land my dream job at a top tech company."
+                  "Diskodify transformed my career."The best way to predict the future is to invent it."
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full" style={{ background: 'linear-gradient(135deg, #FF6F59 0%, #B085E0 100%)' }} />
                   <div>
-                    <div className="text-[#170F2B] font-medium">Sarah Chen</div>
-                    <div className="text-[#8A8398] text-sm">Software Engineer, Google</div>
+                    <div className="text-[#170F2B] font-medium">Alan Kay</div>
+                    <div className="text-[#8A8398] text-sm">Computer Scientist</div>
                   </div>
                 </div>
               </motion.div>

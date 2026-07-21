@@ -188,7 +188,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="mb-8 inline-block rounded-full border border-[#FFC65C]/30 bg-[#170F2B]/40 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-[#FFC65C] backdrop-blur-sm"
         >
-          A new horizon for builders
+          Internship programs for future builders
         </motion.span>
 
         <motion.h1
@@ -197,9 +197,9 @@ const Hero = () => {
           transition={{ duration: 0.9, delay: 0.3 }}
           className="text-center font-display text-6xl font-extrabold leading-[0.95] text-[#FBF4E8] md:text-8xl lg:text-[7rem]"
         >
-          Learn to build
+          Learn by building
           <br />
-          <span className="text-[#FFC65C]">the future</span>
+          <span className="text-[#FFC65C]">real projects</span>
         </motion.h1>
 
         <motion.p
@@ -208,8 +208,8 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-8 max-w-xl text-center text-lg font-light leading-relaxed text-[#D9D2E4] md:text-xl"
         >
-          Master AI, web development, and app development with courses built
-          by people who ship for a living.
+          Join our internship programs and work on real-time projects
+          alongside industry specialists who ship for a living.
         </motion.p>
 
         <motion.div
@@ -218,7 +218,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.75 }}
           className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <PillButton variant="primary">Explore courses</PillButton>
+          <PillButton variant="primary">Explore programs</PillButton>
           <PillButton variant="secondary">Watch demo</PillButton>
         </motion.div>
       </motion.div>

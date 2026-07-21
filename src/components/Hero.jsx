@@ -218,8 +218,8 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.75 }}
           className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <PillButton variant="primary">Explore programs</PillButton>
-          <PillButton variant="secondary">Watch demo</PillButton>
+          {/* <PillButton variant="primary">Explore programs</PillButton>
+          <PillButton variant="secondary">Watch demo</PillButton> */}
         </motion.div>
       </motion.div>
 

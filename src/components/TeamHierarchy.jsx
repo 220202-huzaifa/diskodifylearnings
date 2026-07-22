@@ -16,10 +16,10 @@ const TEAM = [
   { id: '02', initials: 'MA', name: 'Muhammad Adil', role: 'Full Stack Developer', exp: '3+ years industrial experience', accent: '#B085E0', photo: '/assets/awaab.jpeg' },
   { id: '03', initials: 'AJ', name: 'Awaab Javed', role: 'Back-End Developer', exp: '3+ years industrial experience', accent: '#FF6F59', photo: '/assets/adil.jpeg' },
   { id: '04', initials: 'AS', name: 'Ammar Shahid', role: 'Front-End Developer', exp: '2+ years industrial experience', accent: '#FFC65C', photo: '/assets/Ammar.jpeg' },
-  { id: '02', initials: 'AM', name: 'Ali Mardan', role: 'MERN Stack Developer', exp: '3+ years industrial experience', accent: '#B085E0', photo: '/assets/mardan.jpeg' },
-  { id: '03', initials: 'TW', name: 'Talha Waqar', role: 'AI Engineer', exp: '2+ years industrial experience', accent: '#FF6F59', photo: '/assets/talha.png' },
-  { id: '04', initials: 'ZI', name: 'Zain Irfan', role: 'Python Developer', exp: '2+ years industrial experience', accent: '#FFC65C', photo: '/assets/zain.png' },
-   { id: '04', initials: 'MB', name: 'Muzammal Bajwa', role: 'PHP & Laravel Developer', exp: '3+ years industrial experience', accent: '#FFC65C', photo: '/assets/muzammal.png' },
+  { id: '05', initials: 'AM', name: 'Ali Mardan', role: 'MERN Stack Developer', exp: '3+ years industrial experience', accent: '#B085E0', photo: '/assets/mardan.jpeg' },
+  { id: '06', initials: 'TW', name: 'Talha Waqar', role: 'AI Engineer', exp: '2+ years industrial experience', accent: '#FF6F59', photo: '/assets/talha.png' },
+  { id: '07', initials: 'ZI', name: 'Zain Irfan', role: 'Python Developer', exp: '2+ years industrial experience', accent: '#FFC65C', photo: '/assets/zain.png' },
+   { id: '08', initials: 'MB', name: 'Muzammal Bajwa', role: 'PHP & Laravel Developer', exp: '3+ years industrial experience', accent: '#FFC65C', photo: '/assets/muzammal.png' },
 ]
 
 const fadeUp = {

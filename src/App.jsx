@@ -10,6 +10,7 @@ import TeamHierarchy from './components/TeamHierarchy'
 import Community from './components/Community'
 import Footer from './components/Footer'
 import { useLenisSmoothScroll } from './utils/smoothScroll'
+import Whatsappbutton from './components/Whatsappbutton'
 
 function App() {
   useLenisSmoothScroll()
@@ -26,6 +27,7 @@ function App() {
         <InstructorSpotlight />
         <TeamHierarchy />
         <Community />
+        <Whatsappbutton/>
       </main>
       <Footer />
     </div>

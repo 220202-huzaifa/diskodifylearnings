@@ -45,14 +45,14 @@ const Navigation = () => {
           ))}
         </div>
 
-        <motion.button
+        {/* <motion.button
           className="bg-black text-white px-6 py-3 text-sm font-medium hover:bg-blue-500 transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           data-hoverable
         >
           Start Learning
-        </motion.button>
+        </motion.button> */}
       </div>
     </motion.nav>
   )

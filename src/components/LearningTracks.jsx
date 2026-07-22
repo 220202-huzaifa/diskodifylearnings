@@ -1,3 +1,49 @@
+const MobileCard = ({ title, description, accent, tag }) => (
+  <div
+    className="rounded-3xl border p-6"
+    style={{
+      background: `linear-gradient(160deg, #170F2B 0%, #0D0A19 60%, ${accent}1A 100%)`,
+      borderColor: `${accent}33`,
+    }}
+  >
+    <div className="flex flex-col items-center text-center">
+      <div
+        className="mb-6 h-32 w-32 rounded-2xl border p-4"
+        style={{
+          backgroundColor: `${accent}14`,
+          borderColor: `${accent}33`,
+        }}
+      >
+        <MiniSkyline accent={accent} />
+      </div>
+
+      <span
+        className="mb-3 rounded-full border px-3 py-1 text-xs tracking-[0.15em]"
+        style={{
+          borderColor: `${accent}55`,
+          color: accent,
+        }}
+      >
+        {tag}
+      </span>
+
+      <h2 className="mb-4 text-3xl font-bold text-[#FBF4E8]">
+        {title}
+      </h2>
+
+      <p className="mb-6 text-base leading-7 text-[#B9AFC9]">
+        {description}
+      </p>
+
+      <button
+        className="rounded-full px-6 py-3 font-medium text-[#170F2B]"
+        style={{ backgroundColor: accent }}
+      >
+        Explore Track
+      </button>
+    </div>
+  </div>
+)
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -111,12 +157,12 @@ const StackCard = ({ title, description, count, accent, tag, index, scrollYProgr
           </div>
 
           <div className="flex-1 text-center md:text-left">
-            <span
+            {/* <span
               className="mb-4 inline-block rounded-full px-4 py-2 font-mono text-xs tracking-[0.15em]"
               style={{ backgroundColor: `${accent}1F`, color: accent }}
             >
               {count} COURSES
-            </span>
+            </span> */}
 
             <h2 className="mb-6 font-display text-5xl font-extrabold leading-[1] text-[#FBF4E8] md:text-7xl">
               {title}
@@ -155,7 +201,7 @@ const LearningTracks = () => {
       title: 'AI Development',
       description:
         'Master machine learning, neural networks, and the AI techniques reshaping every industry.',
-      count: '24',
+      
       accent: '#FFC65C',
     },
     {
@@ -163,7 +209,7 @@ const LearningTracks = () => {
       title: 'Web Development',
       description:
         'Build modern, responsive web applications with React, Next.js, and the latest frontend tools.',
-      count: '36',
+      
       accent: '#FF6F59',
     },
     {
@@ -171,7 +217,7 @@ const LearningTracks = () => {
       title: 'App Development',
       description:
         'Create native and cross-platform mobile apps using React Native, Flutter, and more.',
-      count: '18',
+      
       accent: '#B085E0',
     },
     {
@@ -179,7 +225,7 @@ const LearningTracks = () => {
       title: 'MERN Stack',
       description:
         'Become a full-stack developer with MongoDB, Express, React, and Node.js — from APIs to deployment.',
-      count: '20',
+    
       accent: '#5CD6A9',
     },
     {
@@ -187,7 +233,7 @@ const LearningTracks = () => {
       title: 'Python',
       description:
         'Learn Python from the ground up — scripting, automation, data handling, and backend development.',
-      count: '28',
+      
       accent: '#6FA8FF',
     },
     {
@@ -195,20 +241,44 @@ const LearningTracks = () => {
       title: 'Machine Learning',
       description:
         'Dive into supervised and unsupervised learning, model training, and real-world ML pipelines.',
-      count: '22',
+      
       accent: '#FF8FB1',
     },
   ]
 
-  return (
+return (
+  <>
+    {/* Mobile */}
+    <section
+      id="tracks"
+      className="block bg-[#0D0A19] px-5 py-16 md:hidden"
+    >
+      <span className="font-mono text-xs tracking-[0.2em] text-[#FFC65C]">
+        02 — LEARNING TRACKS
+      </span>
+
+      <h1 className="mt-3 mb-10 text-4xl font-extrabold text-[#FBF4E8]">
+        Choose your path
+      </h1>
+
+      <div className="space-y-6">
+        {tracks.map((track) => (
+          <MobileCard key={track.title} {...track} />
+        ))}
+      </div>
+    </section>
+
+    {/* Desktop */}
     <section
       id="tracks"
       ref={containerRef}
-      className="relative bg-[#0D0A19]"
-      style={{ height: `${tracks.length * 100}vh` }}
+      className="relative hidden bg-[#0D0A19] md:block"
+      style={{ height: `${tracks.length * 100}dvh` }}
     >
-      {/* Pinned stage — the page "stays here" while cards stack inside */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div
+        className="sticky top-0 overflow-hidden"
+        style={{ height: "100dvh" }}
+      >
         {tracks.map((track, i) => (
           <StackCard
             key={track.title}
@@ -219,20 +289,21 @@ const LearningTracks = () => {
           />
         ))}
 
-        {/* Heading overlay — stays fixed inside the pinned frame */}
-        <div className="pointer-events-none absolute left-0 top-0 z-50 w-full px-6 pt-24 md:px-8">
+        <div className="pointer-events-none absolute left-0 top-0 z-50 w-full px-8 pt-24">
           <div className="mx-auto max-w-7xl">
             <span className="mb-2 inline-block font-mono text-xs tracking-[0.2em] text-[#FFC65C]">
               02 — LEARNING TRACKS
             </span>
-            <h1 className="font-display text-4xl font-extrabold text-[#FBF4E8] md:text-5xl">
+
+            <h1 className="text-5xl font-extrabold text-[#FBF4E8]">
               Choose your path
             </h1>
           </div>
         </div>
       </div>
     </section>
-  )
+  </>
+)
 }
 
 export default LearningTracks

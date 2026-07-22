@@ -125,7 +125,7 @@ const InstructorSpotlight = () => {
     <div className="mb-4 h-[3px] w-16 bg-[#FFC65C]" />
 
   <h3 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#FBF4E8]">
-      Muhammad <br />Huzaifa
+      Huzaifa Zahid
     </h3>
 
    <p className="mt-2 text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] text-[#FFC65C]">

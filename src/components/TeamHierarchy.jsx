@@ -12,7 +12,7 @@ import { useState } from 'react'
  */
 
 const TEAM = [
-  { id: '01', initials: 'MH', name: 'Muhammad Huzaifa', role: 'Founder & CEO', accent: '#FFC65C',photo:'/assets/Huzaifa.png' },
+  { id: '01', initials: 'MH', name: 'Huzaifa Zahid', role: 'Founder & CEO', accent: '#FFC65C',photo:'/assets/Huzaifa.png' },
   { id: '02', initials: 'MA', name: 'Muhammad Adil', role: 'Full Stack Developer', exp: '3+ years industrial experience', accent: '#B085E0', photo: '/assets/awaab.jpeg' },
   { id: '03', initials: 'AJ', name: 'Awaab Javed', role: 'Back-End Developer', exp: '3+ years industrial experience', accent: '#FF6F59', photo: '/assets/adil.jpeg' },
   { id: '04', initials: 'AS', name: 'Ammar Shahid', role: 'Front-End Developer', exp: '2+ years industrial experience', accent: '#FFC65C', photo: '/assets/Ammar.jpeg' },
